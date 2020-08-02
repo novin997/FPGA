@@ -28,7 +28,7 @@ module clk_2s(
 
 // log2(100000000) = 26.75 = 27 bits to reach that count
 // Initialise the count as zero first
-reg count = 27'd0;
+reg [26:0] count = 27'd0;
 reg enable = 1'b0;
 
 initial begin

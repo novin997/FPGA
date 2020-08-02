@@ -22,7 +22,14 @@
 
 module clk_2s_sim();
 
+reg clk;
+wire led;
 
-clk_2s tb(clk,led); 
-
+clk_2s tb(clk,led);
+initial begin
+    clk <= 1;
+end
+always begin
+    #5 clk <= ~clk;
+end
 endmodule

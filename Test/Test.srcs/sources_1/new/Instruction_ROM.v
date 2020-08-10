@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 02.08.2020 14:40:23
+// Create Date: 10.08.2020 21:01:04
 // Design Name: 
-// Module Name: clk_2s_sim
+// Module Name: Instruction_ROM
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -18,17 +18,17 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
-
-
-module clk_2s_sim();
-    reg clk;
-    wire led;
+module Instruction_ROM(
+    input  [(addr_width-1):0] PC,
+    output [(addr_width-1):0] instruction
+    );
     
-    clk_2s tb(clk,led);
+    parameter addr_width = 32;
+    parameter data_width = 256;
+    
+    reg [(addr_width-1):0] rom[(data_width-1):0];
+    
     initial begin
-        clk <= 1;
-    end
-    always begin
-        #5 clk <= ~clk;
+        $readmemh("PC_Instruction.mem", rom);
     end
 endmodule

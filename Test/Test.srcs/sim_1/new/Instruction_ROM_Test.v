@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 02.08.2020 14:40:23
+// Create Date: 10.08.2020 21:16:56
 // Design Name: 
-// Module Name: clk_2s_sim
+// Module Name: Instruction_ROM_Test
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -18,17 +18,20 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
-
-
-module clk_2s_sim();
-    reg clk;
-    wire led;
+module Instruction_ROM_Test(
+    );
     
-    clk_2s tb(clk,led);
+    parameter addr_width = 32;
+    parameter data_width = 256;
+    
+    reg  [(addr_width-1):0] PC;
+    wire [(addr_width-1):0] instruction;
+    
+    Instruction_ROM tb(PC,instruction);
     initial begin
-        clk <= 1;
+        PC <= 32'h00000000;
     end
     always begin
-        #5 clk <= ~clk;
+        #5 PC <= 32'h00000000;
     end
 endmodule
